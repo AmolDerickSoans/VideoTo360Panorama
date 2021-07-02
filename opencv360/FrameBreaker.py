@@ -20,7 +20,7 @@ def get_frames(filename):
             break
     
     video.release()
-    yeild None
+    yield None
 
 #retrieve video frames
 def get_frame(filename,index):
