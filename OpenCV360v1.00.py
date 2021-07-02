@@ -5,7 +5,7 @@ from tkinter import filedialog
 from PIL import ImageTk, Image  
 import webbrowser
 #import cv2
-#pipfrom opencv360 import FrameBreaker
+from opencv360 import FrameBreaker
 
 root =Tk()
 
@@ -34,7 +34,7 @@ filemenu.add_command(label="Exit", command=root.quit)
 menubar.add_cascade(label="File", menu=filemenu)
 #help menu with links to github ,about(ppl who worked on openCV360 ) and paper
 helpmenu = Menu(menubar, tearoff=0)
-#add link to github
+
 new = 1
 url ="https://github.com/AmolDerickSoans/VideoTo360VR"
 def openweb():
@@ -66,6 +66,9 @@ Filename = ""
 def browseFiles1():
    filename = filedialog.askopenfilename(initialdir = "/" , title = "Select a VideoFile", filetypes = (("VideoFiles","*.mp4"),("all files","*.*")))
    Vid1Name.insert(END,filename)
+   Video1Path = Vid1Name.get()
+
+
 
 File1Prompt = Label(root, text = 'Choose Video 1')
 File1Prompt.place(x = 15 , y = 145)
@@ -74,12 +77,14 @@ Vid1Name = Entry(root , width = 50)
 Vid1Name.place(x =15 , y = 165)
 
 button_chooseVid1.place(x = 330 , y = 158)
-Video1Path = Vid1Name.get()
+
+
 
 #Vid2
 def browseFiles2():
    filename = filedialog.askopenfilename(initialdir = "/" , title = "Select a VideoFile", filetypes = (("VideoFiles","*.mp4"),("all files","*.*")))
    Vid2Name.insert(END,filename)
+   Video2Path = Vid2Name.get()
 
 File2Prompt = Label(root, text = 'Choose Video 2')
 File2Prompt.place(x = 15 , y = 245)
@@ -88,13 +93,14 @@ Vid2Name = Entry(root , width = 50)
 Vid2Name.place(x =15 , y = 265)
 
 button_chooseVid2.place(x = 330 , y = 258)
-Video2Path = Vid2Name.get()
+
 
 #vid3
 
 def browseFiles3():
    filename = filedialog.askopenfilename(initialdir = "/" , title = "Select a VideoFile", filetypes = (("VideoFiles","*.mp4"),("all files","*.*")))
    Vid3Name.insert(END,filename)
+   browseFiles3.Video3Path = Vid3Name.get()
 
 File3Prompt = Label(root, text = 'Choose Video 3')
 File3Prompt.place(x = 15 , y = 345)
@@ -103,11 +109,13 @@ Vid3Name = Entry(root , width = 50)
 Vid3Name.place(x =15 , y = 365)
 
 button_chooseVid3.place(x = 330 , y = 358)
-Video3Path = Vid3Name.get()
+
 
 
 #slider to set frame skip
 v1 = DoubleVar()
+
+
 def show1():  
       
     sel = "Frames to Be Skipped = " + str(v1.get())
@@ -126,5 +134,19 @@ SelectedFrameSkipLabel.place(x = 15  ,y= 470)
 
 SetFrameSkipButton = Button(root, text = 'SET', command = show1)
 SetFrameSkipButton.place(x= 200, y= 440 )
+
+
+
+def getFrames():
+   skip = v1.get()
+   print(int(skip))
+   FrameBreaker.frameBreaker(browseFiles3.Video3Path , "output/vid3" , skip)
+   
+
+
+
+button_next = Button(root,text = "NEXT" ,command = getFrames)
+button_next.place(x = 250 , y = 510)
+
 
 root.mainloop() 

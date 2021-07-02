@@ -1,69 +1,63 @@
 import cv2
 import numpy as np 
 import matplotlib.pyplot as plt 
+import os, glob
 
 ####TO DO                     STATUS
 # ~get frames~                done
 #count frames                 done
 #connecting code to get path  incomplete
 #save images function         incomplete
-#collage preview              done
+#collage preview              incomplete
 #
 #generator for reading video
-def get_frames(filename):
-    video = cv2.VideoCapture(filename)
-    while video.isOpened():
-        ret,frame = video.read()
-        if ret:
-            yield frame
-        else:
-            break
+
+def frameBreaker(VFILE,dir,framesToSkip):
+    ########clearing previous files in directory###########
+    for imgfile in os.scandir(dir):
+        os.remove(imgfile.path)
     
-    video.release()
-    yield None
-
-#retrieve video frames
-def get_frame(filename,index):
-    counter = 0
-    video = cv2.VideoCapture(filename)
-    while video.isOpened():
-        ret , frame = video.read()
-        if ret:
-            if counter == index:
-                return frame
-            counter += 1
-
-        else:
-            break
-    video.release()
-    return None
-
-#get number of frames (requires codec support) so we'll use only mp4 in this case
- 
-video = cv2.VideoCapture(VFILE)
-frame_count = int(video.get(cv2.CAP_PROP_FRAME_COUNT))
-video.release()
-
- #makes a collage to preview images that where saved
-
-COLLAGE_ROWS = 3
-COLLAGE_COLS = 5
-
-collage_num_images = COLLAGE_ROWS * COLLAGE_COLS
-skip_frames = frame_count // collage_num_images
-
-frames = []
-counter = 0
-for f in get_frames(VFILE):
-    if counter % skip_frames == 0:
-        frames.append(f)
-    counter += 1
+#################### Setting up the file ################
     
-row1 = np.concatenate( frames[0:5], axis=1)
-row2 = np.concatenate( frames[5:10], axis=1)
-row3 = np.concatenate( frames[10:15], axis=1)
-collage = np.concatenate( (row1, row2, row3), axis=0) 
-collage = cv2.cvtColor(collage, cv2.COLOR_BGR2RGB)
-plt.imshow(collage)
+    vidcap = cv2.VideoCapture(VFILE)
+    success, image = vidcap.read()
 
+#################### Setting up parameters ################
+
+#OpenCV is notorious for not being able to good to 
+# predict how many frames are in a video. 
+
+   # fps = vidcap.get(cv2.CAP_PROP_FPS)
+  
+    frame_counter(VFILE)  
+    tot_frames = frame_counter.frame_count
+    print("total frames : %d"  %tot_frames )
+  
+    n = int(framesToSkip)  
+     
+                          # Desired interval of frames to include
+    desired_frames = np.arange(1,tot_frames , n)
+    print(desired_frames) 
+
+
+#################### Initiate Process ################
+
+    for i in desired_frames:
+        vidcap.set(1, i-1)                      
+        success, image = vidcap.read(1)         # image is an array of array of [R,G,B] values
+        frameId = vidcap.get(1)                # The 0th frame is often a throw-away
+        cv2.imwrite(dir + "/frame%d.jpg" % frameId, image)
+
+    vidcap.release()
+    print("Complete")
         
+
+
+def frame_counter(VFILE):
+    video = cv2.VideoCapture(VFILE)
+    frame_counter.frame_count = int(video.get(cv2.CAP_PROP_FRAME_COUNT))
+    video.release()
+    
+
+
+
