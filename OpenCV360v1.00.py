@@ -66,7 +66,7 @@ Filename = ""
 def browseFiles1():
    filename = filedialog.askopenfilename(initialdir = "/" , title = "Select a VideoFile", filetypes = (("VideoFiles","*.mp4"),("all files","*.*")))
    Vid1Name.insert(END,filename)
-   Video1Path = Vid1Name.get()
+   browseFiles1.Video1Path = Vid1Name.get()
 
 
 
@@ -84,7 +84,7 @@ button_chooseVid1.place(x = 330 , y = 158)
 def browseFiles2():
    filename = filedialog.askopenfilename(initialdir = "/" , title = "Select a VideoFile", filetypes = (("VideoFiles","*.mp4"),("all files","*.*")))
    Vid2Name.insert(END,filename)
-   Video2Path = Vid2Name.get()
+   browseFiles2.Video2Path = Vid2Name.get()
 
 File2Prompt = Label(root, text = 'Choose Video 2')
 File2Prompt.place(x = 15 , y = 245)
@@ -140,6 +140,8 @@ SetFrameSkipButton.place(x= 200, y= 440 )
 def getFrames():
    skip = v1.get()
    print(int(skip))
+   FrameBreaker.frameBreaker(browseFiles1.Video1Path , "output/vid1" , skip)
+   FrameBreaker.frameBreaker(browseFiles2.Video2Path , "output/vid2" , skip)
    FrameBreaker.frameBreaker(browseFiles3.Video3Path , "output/vid3" , skip)
    
 
@@ -147,6 +149,7 @@ def getFrames():
 
 button_next = Button(root,text = "NEXT" ,command = getFrames)
 button_next.place(x = 250 , y = 510)
+
 
 
 root.mainloop() 
