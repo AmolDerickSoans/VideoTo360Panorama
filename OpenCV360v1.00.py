@@ -6,10 +6,10 @@ from PIL import ImageTk, Image
 import webbrowser
 #import cv2
 from opencv360 import FrameBreaker
-
+from process import *
 root =Tk()
 
-root.title('OpenCV 360 V1.00')
+root.title('OpenCV 360 V1.04')
 root.geometry("600x600+100+20")
 #dummyfunction
 def donothing():
@@ -56,7 +56,7 @@ label1.image = logoPlace
 label1.place(x=260, y=20)
 #Title Text
 
-Title = Label(root, text = 'openCV360 v1.00')
+Title = Label(root, text = 'openCV360 v1.04')
 Title.config(font=("Courier",14))
 Title.place(x=212 , y = 120)
 
@@ -139,10 +139,13 @@ SetFrameSkipButton.place(x= 200, y= 440 )
 
 def getFrames():
    skip = v1.get()
-   print(int(skip))
+   print(int(skip)) 
    FrameBreaker.frameBreaker(browseFiles1.Video1Path , "output/vid1" , skip)
    FrameBreaker.frameBreaker(browseFiles2.Video2Path , "output/vid2" , skip)
    FrameBreaker.frameBreaker(browseFiles3.Video3Path , "output/vid3" , skip)
+   delete_blurred("output/vid1")
+   delete_blurred("output/vid2")
+   delete_blurred("output/vid3")
    
 
 
