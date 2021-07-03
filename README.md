@@ -96,7 +96,7 @@ This is  list of python packages you need to use the software and how to install
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/AmolDerickSoans/VideoTo360VR.git
    ```
 2. Install pip packages mentioned above
 3. Run
