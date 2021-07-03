@@ -22,14 +22,13 @@
 
   <p align="center">
     OpenCV python based software to turn video clips into a single 360 panoroma image
-    
     <br />
-   
-   
+    <a href="https://github.com/othneildrew/Best-README-Template"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
     <a href="https://github.com/AmolDerickSoans/VideoTo360VR/issues">Report Bug</a>
     ·
-    <a href="https://github.com/AmolDerickSoans/VideoTo360VR/issues">Request Feature</a>
-  </p>
+    <a href="https://github.com/othneildrew/Best-README-Template/issues">Request Feature</a>
 </p>
 
 
@@ -182,3 +181,4 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [license-url]: https://github.com/github_username/repo/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/github_username
+[product-screenshot]: resources/mainWindowV1.PNG
