@@ -101,7 +101,8 @@ This is  list of python packages you need to use the software and how to install
    ```
 2. Install pip packages mentioned above
 3. Run
-   ``` python OpenCV360v1.00.py 
+   ```sh
+   python OpenCV360v1.00.py 
    ```
 4. TroubleShooting : make sure output/vid1 output/vid2 output/vid3 directories are made
                      to delete the blurred images , python requires file permissions set up properly
