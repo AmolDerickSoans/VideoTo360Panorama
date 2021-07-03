@@ -65,12 +65,12 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project  
   This is an openCV Project that once completed will be able to take in video clips taken in different angles of your surroundings and turn them into one single 360 panorama image .
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-Here's a blank template to get started:
+[![VideoTo360VR][product-screenshot]](https://github.com/AmolDerickSoans/VideoTo360VR/blob/main/resources/mainWindowV1.PNG)
+<!-->Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
 `github_username`, `repo_name`, `twitter_handle`, `email`, `project_title`, `project_description`
 
-
+<-->
 ### Built With
 
 * [Python]()
