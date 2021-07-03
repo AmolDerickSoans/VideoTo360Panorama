@@ -1,33 +1,31 @@
-# VideoTo360VR
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+
+<!-- [![Contributors][contributors-shield]][contributors-url]
+     [![Stargazers][stars-shield]][stars-url]
+-->
+[![Forks][forks-shield]][https://github.com/AmolDerickSoans/VideoTo360VR/network/members]
+[![Issues][issues-shield]][https://github.com/AmolDerickSoans/VideoTo360VR/issues]
+
 
 
 
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/AmolDerickSoans/VideoTo360VR">
+    <img src="resources/360-camera.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">project_title</h3>
+  <h3 align="center">VideoTo360VR</h3>
 
   <p align="center">
-    project_description
+    OpenCV python based software to turn video clips into a single 360 panoroma image
+    
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+   
+   
+    <a href="https://github.com/AmolDerickSoans/VideoTo360VR/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/AmolDerickSoans/VideoTo360VR/issues">Request Feature</a>
   </p>
 </p>
 
@@ -62,9 +60,9 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+## About The Project  
+  This is an openCV Project that once completed will be able to take in video clips taken in different angles of your surroundings and turn them into one single 360 panorama image .
+[![MainWindow][resources/mainWindowV1.png]](https://github.com/AmolDerickSoans/VideoTo360VR/blob/main/resources/mainWindowV1.PNG)
 
 Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
