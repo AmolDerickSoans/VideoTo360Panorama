@@ -2,8 +2,11 @@
 <!-- [![Contributors][contributors-shield]][contributors-url]
      [![Stargazers][stars-shield]][stars-url]
 -->
-[![Forks][forks-shield]][https://github.com/AmolDerickSoans/VideoTo360VR/network/members]
-[![Issues][issues-shield]][https://github.com/AmolDerickSoans/VideoTo360VR/issues]
+[![Contributors][contributors-shield]][contributors-url]
+[![Forks][forks-shield]][forks-url]
+[![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+
 
 
 
@@ -62,8 +65,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project  
   This is an openCV Project that once completed will be able to take in video clips taken in different angles of your surroundings and turn them into one single 360 panorama image .
-[![MainWindow][resources/mainWindowV1.png]](https://github.com/AmolDerickSoans/VideoTo360VR/blob/main/resources/mainWindowV1.PNG)
-
+[![Product Name Screen Shot][product-screenshot]](https://example.com)
 Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
 `github_username`, `repo_name`, `twitter_handle`, `email`, `project_title`, `project_description`
@@ -71,9 +73,9 @@ Here's a blank template to get started:
 
 ### Built With
 
-* []()
-* []()
-* []()
+* [Python]()
+* [OpenCv]()
+* [Tkinter]()
 
 
 
@@ -84,10 +86,12 @@ To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
+This is  list of python packages you need to use the software and how to install them.
+* pip
   ```sh
-  npm install npm@latest -g
+   pip install opencv-contrib-python
+   pip install pillow
+   pip install matplotlib
   ```
 
 ### Installation
@@ -96,17 +100,22 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    git clone https://github.com/github_username/repo_name.git
    ```
-2. Install NPM packages
-   ```sh
-   npm install
+2. Install pip packages mentioned above
+3. Run
+   ``` python OpenCV360v1.00.py 
    ```
-
+4. TroubleShooting : make sure output/vid1 output/vid2 output/vid3 directories are made
+                     to delete the blurred images , python requires file permissions set up properly
+   
 
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Select 3 short video files
+Set the number of frames you want to skip
+Click on "next"
+You can view the console for which frames are being picked and which ones are deleted for being blurred
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
@@ -144,14 +153,14 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/github_username/repo_name](https://github.com/AmolDerickSoans/VideoTo360VR/issues)
 
 
 
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-* []()
+* [Richi Susil Jacob]()
 * []()
 * []()
 
@@ -164,11 +173,11 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [contributors-shield]: https://img.shields.io/github/contributors/github_username/repo.svg?style=for-the-badge
 [contributors-url]: https://github.com/github_username/repo/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/github_username/repo.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo/network/members
+[forks-url]: https://github.com/AmolDerickSoans/VideoTo360VR/network/members
 [stars-shield]: https://img.shields.io/github/stars/github_username/repo.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo/stargazers
+[stars-url]: https://github.com/AmolDerickSoans/VideoTo360VR/stargazers
 [issues-shield]: https://img.shields.io/github/issues/github_username/repo.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo/issues
+[issues-url]: https://github.com/AmolDerickSoans/VideoTo360VR/issues
 [license-shield]: https://img.shields.io/github/license/github_username/repo.svg?style=for-the-badge
 [license-url]: https://github.com/github_username/repo/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
