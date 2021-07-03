@@ -111,10 +111,11 @@ This is  list of python packages you need to use the software and how to install
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Select 3 short video files
-Set the number of frames you want to skip
-Click on "next"
-You can view the console for which frames are being picked and which ones are deleted for being blurred
+1.Select 3 short video files
+2.Set the number of frames you want to skip
+3.Click on "next"
+4.You can view the console for which frames are being picked and which ones are deleted for being blurred
+5.output is stored in output directory
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
