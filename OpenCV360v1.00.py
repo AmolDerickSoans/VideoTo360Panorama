@@ -7,6 +7,7 @@ import webbrowser
 #import cv2
 from opencv360 import FrameBreaker
 from process import *
+import threading
 root =Tk()
 
 root.title('OpenCV 360 V1.04')
@@ -140,13 +141,30 @@ SetFrameSkipButton.place(x= 200, y= 440 )
 def getFrames():
    skip = v1.get()
    print(int(skip)) 
-   FrameBreaker.frameBreaker(browseFiles1.Video1Path , "output/vid1" , skip)
+   """ FrameBreaker.frameBreaker(browseFiles1.Video1Path , "output/vid1" , skip)
    FrameBreaker.frameBreaker(browseFiles2.Video2Path , "output/vid2" , skip)
    FrameBreaker.frameBreaker(browseFiles3.Video3Path , "output/vid3" , skip)
    delete_blurred("output/vid1")
    delete_blurred("output/vid2")
+   delete_blurred("output/vid3") """
+ ####Multithreading the split function####
+   th1 = threading.Thread(target= FrameBreaker.frameBreaker, args=(browseFiles1.Video1Path , "output/vid1" , skip, "a" , "Vid1"))
+   th2 = threading.Thread(target= FrameBreaker.frameBreaker , args=(browseFiles2.Video2Path , "output/vid2" , skip, "b" , "vid2"))
+   th3 = threading.Thread(target= FrameBreaker.frameBreaker,args=(browseFiles3.Video3Path , "output/vid3" , skip, "c" , "vid3"))
+
+   th1.start()
+   th2.start()
+   th3.start()
+   ##Space to write loading function in mainThread
+
+   th1.join()
+   th2.join()
+   th3.join()
+
+   delete_blurred("output/vid1")
+   delete_blurred("output/vid2")
    delete_blurred("output/vid3")
-   
+
 
 
 

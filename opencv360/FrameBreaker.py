@@ -12,7 +12,7 @@ import os, glob
 #
 #generator for reading video
 
-def frameBreaker(VFILE,dir,framesToSkip):
+def frameBreaker(VFILE,dir,framesToSkip,frameName,vidName):
     ########clearing previous files in directory###########
     for imgfile in os.scandir(dir):
         os.remove(imgfile.path)
@@ -31,7 +31,7 @@ def frameBreaker(VFILE,dir,framesToSkip):
   
     frame_counter(VFILE)  
     tot_frames = frame_counter.frame_count
-    print("total frames : %d"  %tot_frames )
+    print("total frames in "+vidName+" : %d"  %tot_frames )
   
     n = int(framesToSkip)  
      
@@ -46,10 +46,10 @@ def frameBreaker(VFILE,dir,framesToSkip):
         vidcap.set(1, i-1)                      
         success, image = vidcap.read(1)         # image is an array of array of [R,G,B] values
         frameId = vidcap.get(1)                # The 0th frame is often a throw-away
-        cv2.imwrite(dir + "/frame%d.jpg" % frameId, image)
+        cv2.imwrite(dir + "/"+frameName+"frame%d.jpg" % frameId, image)
 
     vidcap.release()
-    print("Complete")
+    print("Completed" + vidName)
         
 
 
