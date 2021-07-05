@@ -45,7 +45,7 @@ def delete_blurred(filePath):
         logging.info(f'processing {image_path}')
 
        
-        blur_map, score, blurry = estimate_blur(image, threshold= 230)
+        blur_map, score, blurry = estimate_blur(image, threshold= 15)
         logging.info(f'image_path: {image_path} score: {score} blurry: {blurry}')
 
         if blurry == True:

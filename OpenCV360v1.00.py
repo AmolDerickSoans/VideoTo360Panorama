@@ -1,4 +1,5 @@
 import tkinter 
+import tkinter.ttk as ttk
 from tkinter import *
 from tkinter import filedialog
 #import matplotlib.pyplot as pyplot
@@ -73,11 +74,11 @@ def browseFiles1():
 
 File1Prompt = Label(root, text = 'Choose Video 1')
 File1Prompt.place(x = 15 , y = 145)
-button_chooseVid1 = Button(root, text = "Browse Files" , command = browseFiles1)
-Vid1Name = Entry(root , width = 50)
+button_chooseVid1 = ttk.Button(root, text = "Browse Files" , command = browseFiles1)
+Vid1Name = ttk.Entry(root , width = 50)
 Vid1Name.place(x =15 , y = 165)
 
-button_chooseVid1.place(x = 330 , y = 158)
+button_chooseVid1.place(x = 330 , y = 163)
 
 
 
@@ -89,11 +90,11 @@ def browseFiles2():
 
 File2Prompt = Label(root, text = 'Choose Video 2')
 File2Prompt.place(x = 15 , y = 245)
-button_chooseVid2 = Button(root, text = "Browse Files" , command = browseFiles2)
-Vid2Name = Entry(root , width = 50)
+button_chooseVid2 = ttk.Button(root, text = "Browse Files" , command = browseFiles2)
+Vid2Name = ttk.Entry(root , width = 50)
 Vid2Name.place(x =15 , y = 265)
 
-button_chooseVid2.place(x = 330 , y = 258)
+button_chooseVid2.place(x = 330 , y = 263)
 
 
 #vid3
@@ -105,11 +106,11 @@ def browseFiles3():
 
 File3Prompt = Label(root, text = 'Choose Video 3')
 File3Prompt.place(x = 15 , y = 345)
-button_chooseVid3 = Button(root, text = "Browse Files" , command = browseFiles3)
-Vid3Name = Entry(root , width = 50)
+button_chooseVid3 = ttk.Button(root, text = "Browse Files" , command = browseFiles3)
+Vid3Name = ttk.Entry(root , width = 50)
 Vid3Name.place(x =15 , y = 365)
 
-button_chooseVid3.place(x = 330 , y = 358)
+button_chooseVid3.place(x = 330 , y = 363)
 
 
 
@@ -125,7 +126,7 @@ def show1():
   
 FrameSlider = Scale( root, variable = v1, 
            from_ = 5, to = 100, 
-           orient = HORIZONTAL)   
+           orient = HORIZONTAL ,length= 190)   
 FrameSlider.place(x=25 , y= 430)
   
 FrameSliderLabel = Label(root, text = "Frame Skipper")
@@ -133,28 +134,31 @@ FrameSliderLabel.place(x =15 ,y = 400)
 SelectedFrameSkipLabel = Label(root)
 SelectedFrameSkipLabel.place(x = 15  ,y= 470)
 
-SetFrameSkipButton = Button(root, text = 'SET', command = show1)
-SetFrameSkipButton.place(x= 200, y= 440 )
+SetFrameSkipButton = ttk.Button(root, text = 'SET', command = show1)
+SetFrameSkipButton.place(x= 240, y= 445 )
 
 
 
 def getFrames():
    skip = v1.get()
    print(int(skip)) 
-   """ FrameBreaker.frameBreaker(browseFiles1.Video1Path , "output/vid1" , skip)
-   FrameBreaker.frameBreaker(browseFiles2.Video2Path , "output/vid2" , skip)
-   FrameBreaker.frameBreaker(browseFiles3.Video3Path , "output/vid3" , skip)
+   ### Single Thread ###
+   """ FrameBreaker.frameBreaker(browseFiles1.Video1Path , "output/vid1" , skip, "a" , "Vid1")
+   FrameBreaker.frameBreaker(browseFiles2.Video2Path , "output/vid2" , skip, "b" , "vid2")
+   FrameBreaker.frameBreaker(browseFiles3.Video3Path , "output/vid3" , skip, "c" , "vid3")
    delete_blurred("output/vid1")
    delete_blurred("output/vid2")
    delete_blurred("output/vid3") """
- ####Multithreading the split function####
+ ####Multithreading the frame split function####
    th1 = threading.Thread(target= FrameBreaker.frameBreaker, args=(browseFiles1.Video1Path , "output/vid1" , skip, "a" , "Vid1"))
-   th2 = threading.Thread(target= FrameBreaker.frameBreaker , args=(browseFiles2.Video2Path , "output/vid2" , skip, "b" , "vid2"))
-   th3 = threading.Thread(target= FrameBreaker.frameBreaker,args=(browseFiles3.Video3Path , "output/vid3" , skip, "c" , "vid3"))
-
    th1.start()
+   th2 = threading.Thread(target= FrameBreaker.frameBreaker , args=(browseFiles2.Video2Path , "output/vid2" , skip, "b" , "vid2"))
    th2.start()
+   th3 = threading.Thread(target= FrameBreaker.frameBreaker,args=(browseFiles3.Video3Path , "output/vid3" , skip, "c" , "vid3"))
    th3.start()
+   
+  
+   
    ##Space to write loading function in mainThread
 
    th1.join()
@@ -164,13 +168,12 @@ def getFrames():
    delete_blurred("output/vid1")
    delete_blurred("output/vid2")
    delete_blurred("output/vid3")
+   button_next['state'] = NORMAL
 
 
-
-
-button_next = Button(root,text = "NEXT" ,command = getFrames)
-button_next.place(x = 250 , y = 510)
-
-
+button_run = ttk.Button(root,text = "RUN" ,command = getFrames)
+button_run.place(x = 200 , y = 510)
+button_next = ttk.Button(root,text = "NEXT" , command = donothing ,state= DISABLED)
+button_next.place(x = 290 , y = 510 ) 
 
 root.mainloop() 
