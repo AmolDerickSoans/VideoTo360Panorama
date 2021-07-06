@@ -2,10 +2,8 @@ import tkinter as tk
 import tkinter.ttk as ttk
 from tkinter import *
 from tkinter import filedialog
-#import matplotlib.pyplot as pyplot
-from PIL import ImageTk, Image  
-import webbrowser
-#import cv2
+from PIL import Image , ImageTk
+import webbrowser,os
 from opencv360 import FrameBreaker,makeCollageAble,collage
 from process import *
 import threading
@@ -192,7 +190,7 @@ class StartPage(tk.Frame):
             th1.join()
             th2.join()
             th3.join()
-            th4 = threading.Thread(target= delete_blurred, args=( "output/vid1",))
+            """  th4 = threading.Thread(target= delete_blurred, args=( "output/vid1",))
             th4.start()
             th5 = threading.Thread(target= delete_blurred, args=( "output/vid2",))
             th5.start()
@@ -200,7 +198,7 @@ class StartPage(tk.Frame):
             th6.start()
             th4.join()
             th5.join()
-            th6.join()
+            th6.join() """
             makeCollageAble.collageAble("output/vid1", "output/collage1/")
             makeCollageAble.collageAble("output/vid2", "output/collage2/")
             makeCollageAble.collageAble("output/vid3", "output/collage3/")
@@ -215,7 +213,7 @@ class StartPage(tk.Frame):
         button_run = ttk.Button(self,text = "RUN" ,command = getFrames)
         #button_run.place(x = 200 , y = 510)
         button_run.grid(column=0,row=12,padx=5,pady=10)
-        button_next = ttk.Button(self,text = "NEXT" , command = lambda : controller.show_frame(Page1)  ,state= DISABLED)
+        button_next = ttk.Button(self,text = "NEXT" , command = lambda : controller.show_frame(Page1)  ,state= NORMAL) #DISABLE
         #button_next.place(x = 290 , y = 510 ) 
         button_next.grid(column=1,row=12,padx=5,pady=10)
        
@@ -224,8 +222,10 @@ class StartPage(tk.Frame):
   
 # second window frame page1
 class Page1(tk.Frame):
+    
      
     def __init__(self, parent, controller):
+        
          
         tk.Frame.__init__(self, parent)
         
@@ -243,6 +243,20 @@ class Page1(tk.Frame):
         tabControl.add(tab3, text ='Video 3')
         tabControl.add(tab4, text ='Confirm')
         tabControl.pack(expand = 1, fill ="both")
+        def fullpath(Path):
+            current = os.path.abspath(os.getcwd())
+            Fullpath = str(current) + Path
+            return Fullpath
+        
+
+        def openfolder(Path):
+            current = os.path.abspath(os.getcwd())
+            fullpath= str(current) + Path
+            print(fullpath)
+            os.startfile(fullpath)  
+        
+
+        #tab1
         ttk.Label(tab1,text = "Details and Preview extracted frames from Video 1"
                 
                  ).grid(column = 0, 
@@ -250,18 +264,61 @@ class Page1(tk.Frame):
                                     padx = 3,
                        
                                     pady = 3)  
+        
+        canvas1 = Canvas(tab1 , width =360,height=120,bg = 'black')
+        canvas1.grid(column= 0,row=1 ,padx=5,pady=5)
+        #img1 = ImageTk.PhotoImage(Image.open(fullpath("\output\collage1\FinalCollage.png")))
+        #canvas1.create_image(20,20,anchor=NW , image = img1)
+
+        button_view = ttk.Button(tab1,text ="View Images" , command = lambda: openfolder("\\output\\vid1"), 
+        )
+        button_view.grid(
+            column= 0 , 
+            row= 2,
+            padx= 5,
+            pady= 5
+        )
+        
+
+
+        #tab2
+
         ttk.Label(tab2,
 
                 text ="Details of Video 2").grid(column = 0,
                                             row = 0, 
                                             padx = 3,
                                             pady = 3)
+        canvas2 = Canvas(tab2 , width =360,height=120,bg = 'black')
+        canvas2.grid(column= 0,row=1 ,padx=5,pady=5)
+        ttk.Button(tab2,text ="View Images" , command = lambda: openfolder("\\output\\vid2"), 
+        ).grid(
+            column= 0 , 
+            row= 2,
+            padx= 5,
+            pady= 5
+        )
+
+        #tab3
+
         ttk.Label(tab3,
 
                 text ="Details of Video 3").grid(column = 0,
                                             row = 0, 
                                             padx = 3,
                                             pady = 3)
+        canvas3 = Canvas(tab3 , width =360,height=120,bg = 'black')
+        canvas3.grid(column= 0,row=1 ,padx=5,pady=5)
+        ttk.Button(tab3,text ="View Images" , command = lambda: openfolder("\\output\\vid3"), 
+        ).grid(
+            column= 0 , 
+            row= 2,
+            padx= 5,
+            pady= 5
+        )
+
+        #tab4
+
         button_previous= ttk.Button(tab4, text =" << Previous",
                             command = lambda : controller.show_frame(StartPage)).grid(column = 4,row = 1,padx=5,pady=5)
         button_stitch= ttk.Button(tab4, text ="Stitch Panaroma",

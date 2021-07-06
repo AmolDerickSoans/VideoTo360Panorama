@@ -1,7 +1,7 @@
 
 import cv2
 import numpy as np
-
+#from PIL import Image
 
 
 def collageMaker(sourceDirectory,collageNumber):
@@ -16,7 +16,7 @@ def collageMaker(sourceDirectory,collageNumber):
     image4=cv2.imread(sourceDirectory+"/index3.jpg")
     image5=cv2.imread(sourceDirectory+"/index4.jpg")
     image6=cv2.imread(sourceDirectory+"/index5.jpg")
-    print("read all files")
+    
 
 
     # make all the images of same size 
@@ -24,12 +24,12 @@ def collageMaker(sourceDirectory,collageNumber):
     for k in range(6):
         try:
 
-            image1=cv2.resize(image1,(200,200), interpolation = cv2.INTER_AREA)
-            image2=cv2.resize(image2,(200,200), interpolation = cv2.INTER_AREA)
-            image3=cv2.resize(image3,(200,200), interpolation = cv2.INTER_AREA)
-            image4=cv2.resize(image4,(200,200), interpolation = cv2.INTER_AREA)
-            image5=cv2.resize(image5,(200,200), interpolation = cv2.INTER_AREA)
-            image6=cv2.resize(image6,(200,200), interpolation = cv2.INTER_AREA) 
+            image1=cv2.resize(image1,(60,60), interpolation = cv2.INTER_AREA)
+            image2=cv2.resize(image2,(60,60), interpolation = cv2.INTER_AREA)
+            image3=cv2.resize(image3,(60,60), interpolation = cv2.INTER_AREA)
+            image4=cv2.resize(image4,(60,60), interpolation = cv2.INTER_AREA)
+            image5=cv2.resize(image5,(60,60), interpolation = cv2.INTER_AREA)
+            image6=cv2.resize(image6,(60,60), interpolation = cv2.INTER_AREA) 
         except:
             break
 
@@ -49,5 +49,7 @@ def collageMaker(sourceDirectory,collageNumber):
     # Show the final attachment
    
     cv2.imwrite("output/collage%d/FinalCollage.jpg" %collageNumber  ,Vertical_attachment)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    #im = Image.open("output/collage%d/FinalCollage.jpg" %collageNumber)
+    #im.save("output/collage%d/FinalCollage.png" %collageNumber)
+
+    
