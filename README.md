@@ -152,7 +152,8 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
+Amol derrick soans
+Richi Susil Jacob
 
 Project Link: [https://github.com/github_username/repo_name](https://github.com/AmolDerickSoans/VideoTo360VR/issues)
 
@@ -162,7 +163,7 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 ## Acknowledgements
 
 * [Richi Susil Jacob]()
-* []()
+* [richi2000.rs@gmail.com]()
 * []()
 
 
@@ -184,3 +185,4 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/github_username
 [product-screenshot]: resources/mainWindowV1.PNG
+[product-screenshot]: resources/mainWindowV2.PNG
