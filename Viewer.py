@@ -1,12 +1,12 @@
 import tkinter as tk
 import tkinter.ttk as ttk
+import webbrowser,os
+import threading
+from PIL import Image,ImageTk
 from tkinter import *
 from tkinter import filedialog
-from PIL import Image , ImageTk
-import webbrowser,os
-from opencv360 import FrameBreaker,makeCollageAble,collage
-from process import *
-import threading
+from opencv360 import FrameBreaker,makeCollageAble,collage,process
+
 
 LARGEFONT =("Verdana", 35)
 
@@ -190,15 +190,15 @@ class StartPage(tk.Frame):
             th1.join()
             th2.join()
             th3.join()
-            """  th4 = threading.Thread(target= delete_blurred, args=( "output/vid1",))
+            th4 = threading.Thread(target= process.delete_blurred, args=( "output/vid1",))
             th4.start()
-            th5 = threading.Thread(target= delete_blurred, args=( "output/vid2",))
+            th5 = threading.Thread(target= process.delete_blurred, args=( "output/vid2",))
             th5.start()
-            th6 = threading.Thread(target= delete_blurred, args=( "output/vid3",))
+            th6 = threading.Thread(target= process.delete_blurred, args=( "output/vid3",))
             th6.start()
             th4.join()
             th5.join()
-            th6.join() """
+            th6.join() 
             makeCollageAble.collageAble("output/vid1", "output/collage1/")
             makeCollageAble.collageAble("output/vid2", "output/collage2/")
             makeCollageAble.collageAble("output/vid3", "output/collage3/")
@@ -267,8 +267,8 @@ class Page1(tk.Frame):
         
         canvas1 = Canvas(tab1 , width =360,height=120,bg = 'black')
         canvas1.grid(column= 0,row=1 ,padx=5,pady=5)
-        #img1 = ImageTk.PhotoImage(Image.open(fullpath("\output\collage1\FinalCollage.png")))
-        #canvas1.create_image(20,20,anchor=NW , image = img1)
+        img1 = ImageTk.PhotoImage(Image.open(fullpath("\output\collage1\FinalCollage.png")))
+        canvas1.create_image(20,20,anchor=NW , image = img1)
 
         button_view = ttk.Button(tab1,text ="View Images" , command = lambda: openfolder("\\output\\vid1"), 
         )
@@ -291,6 +291,8 @@ class Page1(tk.Frame):
                                             pady = 3)
         canvas2 = Canvas(tab2 , width =360,height=120,bg = 'black')
         canvas2.grid(column= 0,row=1 ,padx=5,pady=5)
+        img2 = ImageTk.PhotoImage(Image.open(fullpath("\output\collage2\FinalCollage.png")))
+        canvas2.create_image(20,20,anchor=NW , image = img2)
         ttk.Button(tab2,text ="View Images" , command = lambda: openfolder("\\output\\vid2"), 
         ).grid(
             column= 0 , 
@@ -309,6 +311,8 @@ class Page1(tk.Frame):
                                             pady = 3)
         canvas3 = Canvas(tab3 , width =360,height=120,bg = 'black')
         canvas3.grid(column= 0,row=1 ,padx=5,pady=5)
+        img3 = ImageTk.PhotoImage(Image.open(fullpath("\output\collage3\FinalCollage.png")))
+        canvas1.create_image(20,20,anchor=NW , image = img3)
         ttk.Button(tab3,text ="View Images" , command = lambda: openfolder("\\output\\vid3"), 
         ).grid(
             column= 0 , 
