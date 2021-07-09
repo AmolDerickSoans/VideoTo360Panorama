@@ -6,12 +6,12 @@ import cv2
 import imutils
 import numpy as np
 
-DIR = './pics'
+DIR = './output/final'
 R_WIDTH = 8400
 WIDTH = 8002
 HEIGHT = 4001
 BLACK_COLOR = 25
-RESULT = './result.jpg'
+RESULT = '../output/result.jpg'
 files = os.listdir(DIR)
 
 def stitch(files):
@@ -19,8 +19,8 @@ def stitch(files):
     imgs = []
     for file in files:
         imgs.append(cv2.imread(DIR + '/' + file))
-    try_use_gpu = False
-    stitcher = cv2.Stitcher.create(0)
+    
+    stitcher = cv2.Stitcher.create(mode = 0,TRY_USE_GPU = True )
     status,pano = stitcher.stitch(imgs)
     if status == 0:
         return pano
@@ -104,7 +104,7 @@ def crop(img):
     # cutt of the left and right black edges
     tmp = tmp[0:height, left:right]
     return tmp
-#makes clouds look less jagged by overlaying picture of an ideal sky 
+
 def complement_sky(pano):
     tmp = imutils.resize(pano, width=WIDTH)
     rows, cols = tmp.shape[:2]
@@ -150,13 +150,16 @@ def complement_sky(pano):
 
     return img
 
+
+
 def PanoramaSIFT():
     start = time.time()
+
     files = os.listdir(DIR)
+    
     pano = stitch(files)
     if pano is not None:
         pano = crop(pano)
-        
         #pano = complement_sky(pano)
         cv2.imwrite(RESULT, pano)
     else:

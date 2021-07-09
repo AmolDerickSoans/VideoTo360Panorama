@@ -4,10 +4,11 @@ import webbrowser,os
 import threading
 import PIL.ImageTk
 import PIL.Image
-
+import glob
+import shutil
 from tkinter import *
 from tkinter import filedialog
-from opencv360 import FrameBreaker,makeCollageAble,collage,process
+from opencv360 import FrameBreaker,makeCollageAble,collage,process,panorama
 
 
 LARGEFONT =("Verdana", 35)
@@ -188,7 +189,7 @@ class StartPage(tk.Frame):
             th1.join()
             th2.join()
             th3.join()
-            th4 = threading.Thread(target= process.delete_blurred, args=( "output/vid1",))
+            """ th4 = threading.Thread(target= process.delete_blurred, args=( "output/vid1",))
             th4.start()
             th5 = threading.Thread(target= process.delete_blurred, args=( "output/vid2",))
             th5.start()
@@ -196,13 +197,17 @@ class StartPage(tk.Frame):
             th6.start()
             th4.join()
             th5.join()
-            th6.join() 
+            th6.join()  """
+            process.delete_blurred("output/vid1")
+            process.delete_blurred("output/vid2")
+            process.delete_blurred("output/vid3")
             makeCollageAble.collageAble("output/vid1", "output/collage1/")
             makeCollageAble.collageAble("output/vid2", "output/collage2/")
             makeCollageAble.collageAble("output/vid3", "output/collage3/")
-            collage.collageMaker("output/collage1",1)
-            collage.collageMaker("output/collage2",2)
-            collage.collageMaker("output/collage3",3)
+            #collage.collageMaker("output/collage1",1)
+            #collage.collageMaker("output/collage2",2)
+            #collage.collageMaker("output/collage3",3)
+            print("completed")
             button_next['state'] = NORMAL
 
             
@@ -211,7 +216,7 @@ class StartPage(tk.Frame):
         button_run = ttk.Button(self,text = "RUN" ,command = getFrames)
 
         button_run.grid(column=0,row=12,padx=5,pady=10)
-        button_next = ttk.Button(self,text = "NEXT" , command = lambda : controller.show_frame(Page1)  ,state= NORMAL) #DISABLE
+        button_next = ttk.Button(self,text = "NEXT" , command = lambda : controller.show_frame(Page1)  ,state= NORMAL) #DISABLED#NORMAL
         
         button_next.grid(column=1,row=12,padx=5,pady=10)
        
@@ -230,7 +235,7 @@ class Page1(tk.Frame):
         
         style = ttk.Style(self)
         style.configure('lefttab.TNotebook', tabposition='wn')   
-        img1 = PIL.ImageTk.PhotoImage(PIL.Image.open("output\collage1\FinalCollage.jpg"))
+        #img1 = PIL.ImageTk.PhotoImage(PIL.Image.open("output\collage1\FinalCollage.jpg"))
         tabControl = ttk.Notebook(self , style='lefttab.TNotebook')
         tab1 = ttk.Frame(tabControl)
         tab2 = ttk.Frame(tabControl)
@@ -254,6 +259,26 @@ class Page1(tk.Frame):
             fullpath= str(current) + Path
             print(fullpath)
             os.startfile(fullpath)  
+            
+    
+        def createFinalDir(): 
+            for imgfile in os.scandir("output/final"):
+                    os.remove(imgfile.path)
+
+            print("creating final directory")
+            dst_dir = "output/final"
+
+            for file in glob.glob('output/vid*/*'):    
+                if file.endswith(".jpg"): 
+                    shutil.copy(file, dst_dir)
+                
+
+        
+        def stitchSIFT():
+            createFinalDir()
+            print("stitching")
+            panorama.PanoramaSIFT()
+           
        
         
         #tab1
@@ -268,7 +293,7 @@ class Page1(tk.Frame):
         canvas1 = Canvas(tab1 , width =360,height=120)
         #img1 = PIL.ImageTk.PhotoImage(PIL.Image.open("output\collage1\FinalCollage.jpg"))
         canvas1.grid(column= 0,row=1 ,padx=5,pady=5)
-        canvas1.create_image(0,0,anchor=NW , image = img1) 
+        #canvas1.create_image(0,0,anchor=NW , image = img1) 
         
        
         
@@ -293,8 +318,8 @@ class Page1(tk.Frame):
                                             pady = 3)
         canvas2 = Canvas(tab2 , width =360,height=120,bg = 'black')
         canvas2.grid(column= 0,row=1 ,padx=5,pady=5)
-        img2 = PIL.ImageTk.PhotoImage(PIL.Image.open(fullpath("\output\collage2\FinalCollage.jpg")))
-        canvas2.create_image(0,0,anchor=NW , image = img2)
+        #img2 = PIL.ImageTk.PhotoImage(PIL.Image.open(fullpath("\output\collage2\FinalCollage.jpg")))
+        #canvas2.create_image(0,0,anchor=NW , image = img2)
         ttk.Button(tab2,text ="View Images" , command = lambda: openfolder("\\output\\vid2"), 
         ).grid(
             column= 0 , 
@@ -313,8 +338,8 @@ class Page1(tk.Frame):
                                             pady = 3)
         canvas3 = Canvas(tab3 , width =360,height=120,bg = 'black')
         canvas3.grid(column= 0,row=1 ,padx=5,pady=5)
-        img3 = PIL.ImageTk.PhotoImage(PIL.Image.open(fullpath("\output\collage3\FinalCollage.jpg")))
-        canvas3.create_image(0,0,anchor=NW , image = img3)
+        #img3 = PIL.ImageTk.PhotoImage(PIL.Image.open(fullpath("\output\collage3\FinalCollage.jpg")))
+        #canvas3.create_image(0,0,anchor=NW , image = img3)
         ttk.Button(tab3,text ="View Images" , command = lambda: openfolder("\\output\\vid3"), 
         ).grid(
             column= 0 , 
@@ -325,10 +350,14 @@ class Page1(tk.Frame):
 
         #tab4
 
-        button_previous= ttk.Button(tab4, text =" << Previous",
-                            command = lambda : controller.show_frame(StartPage)).grid(column = 4,row = 1,padx=5,pady=5)
-        button_stitch= ttk.Button(tab4, text ="Stitch Panaroma",
-                            command = lambda : controller.show_frame(Page2)).grid(column = 5,row = 1,padx=20,pady=5)
+        button_previousp1= ttk.Button(self, text =" << Previous",
+                            command = lambda : controller.show_frame(StartPage)).pack() #grid(column = 4,row = 1,padx=5,pady=5)
+        
+        button_stitch= ttk.Button(self, text ="Stitch",
+                            command = lambda : stitchSIFT()).pack()#grid(column = 5,row = 1,padx=20,pady=5)
+
+        button_nextp1= ttk.Button(self, text ="Next >>",
+                            command = lambda : controller.show_frame(Page2) ,state = DISABLED).pack()#grid(column = 6,row = 1,padx=20,pady=5)
 
 
    
