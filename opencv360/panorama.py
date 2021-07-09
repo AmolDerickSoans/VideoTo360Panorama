@@ -20,7 +20,7 @@ def stitch(files):
     for file in files:
         imgs.append(cv2.imread(DIR + '/' + file))
     
-    stitcher = cv2.Stitcher.create(mode = 0,TRY_USE_GPU = True )
+    stitcher = cv2.Stitcher.create(mode = 0)
     status,pano = stitcher.stitch(imgs)
     if status == 0:
         return pano
