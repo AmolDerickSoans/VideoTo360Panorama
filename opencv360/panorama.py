@@ -104,7 +104,7 @@ def crop(img):
     # cutt of the left and right black edges
     tmp = tmp[0:height, left:right]
     return tmp
-
+#makes clouds look less jagged by overlaying picture of an ideal sky 
 def complement_sky(pano):
     tmp = imutils.resize(pano, width=WIDTH)
     rows, cols = tmp.shape[:2]
@@ -156,6 +156,7 @@ def PanoramaSIFT():
     pano = stitch(files)
     if pano is not None:
         pano = crop(pano)
+        
         #pano = complement_sky(pano)
         cv2.imwrite(RESULT, pano)
     else:

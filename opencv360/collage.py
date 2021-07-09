@@ -1,7 +1,16 @@
 
 import cv2
 import numpy as np
-#from PIL import Image
+import os
+import glob
+
+def cleanup():
+    fileList = glob.glob('output/collage*/index*.jpg',recursive=True)
+    for filePath in fileList:
+        try:
+            os.remove(filePath)
+        except OSError:
+            print("error while deleting collage files")
 
 
 def collageMaker(sourceDirectory,collageNumber):
@@ -46,8 +55,10 @@ def collageMaker(sourceDirectory,collageNumber):
     # noe vertical attachment
     
     Vertical_attachment=np.vstack([Horizontal1,Horizontal2])
+    #cleanup index*.jpg
+    cleanup()
     # Show the final attachment
-   
+    print("making collage")
     cv2.imwrite("output/collage%d/FinalCollage.jpg" %collageNumber  ,Vertical_attachment)
     #im = Image.open("output/collage%d/FinalCollage.jpg" %collageNumber)
     #im.save("output/collage%d/FinalCollage.png" %collageNumber)

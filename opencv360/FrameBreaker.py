@@ -1,7 +1,6 @@
 import cv2
-import numpy as np 
-import matplotlib.pyplot as plt 
-import os, glob
+import numpy as np  
+import os
 
 ####TO DO                     STATUS
 # ~get frames~                done
