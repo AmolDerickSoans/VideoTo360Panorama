@@ -17,7 +17,7 @@
     <img src="resources/360-camera.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">VideoTo360VR</h3>
+  <h3 align="center">VideoTo360Panorama</h3>
 
   <p align="center">
     OpenCV python based software to turn video clips into a single 360 panoroma image
@@ -120,7 +120,7 @@ This is  list of python packages you need to use the software and how to install
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
-
+<!--OUTPUT-->
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -184,3 +184,4 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/github_username
 [product-screenshot]: resources/mainWindowV1.PNG
+[product-screenshot1]: resources/page1.PNG
