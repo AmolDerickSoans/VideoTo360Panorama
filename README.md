@@ -64,7 +64,8 @@
 ## About The Project  
    Convert multiple Videos Shot into single 360 panoramic Image using openCV image stitching.
 [![VideoTo360Panorama][product-screenshot]](https://github.com/AmolDerickSoans/VideoTo360VR/blob/main/resources/mainWindowV1.PNG)
-[![Page1]][product-screenshot1]](https://github.com/AmolDerickSoans/VideoTo360VR/blob/main/resources/mainWindowV1.PNG)
+[![Page1][product-screenshot1]](https://github.com/AmolDerickSoans/VideoTo360VR/blob/main/resources/mainWindowV1.PNG)
+
 
 
 <!--Here's a blank template to get started:
@@ -124,7 +125,8 @@ This is  list of python packages you need to use the software and how to install
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
-<!--FEATURES-->
+<!-- FEATURES -->
+
 - [x] Frame Extraction from video input
 - [x] Blur Detection and deletion of blurred frames
 - [ ] Preview Extracted Frames
@@ -134,7 +136,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 
 <!--OUTPUT-->
-
+[![Output][output]](https://github.com/AmolDerickSoans/VideoTo360VR/blob/main/resources/mainWindowV1.PNG)
 
 <!-- ROADMAP -->
 ## Roadmap
