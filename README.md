@@ -63,8 +63,8 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project  
    Convert multiple Videos Shot into single 360 panoramic Image using openCV image stitching.
-[![VideoTo360Panorama][product-screenshot]](https://github.com/AmolDerickSoans/VideoTo360VR/blob/main/resources/mainWindowV1.PNG)
-[![Page1][product-screenshot1]](https://github.com/AmolDerickSoans/VideoTo360VR/blob/main/resources/mainWindowV1.PNG)
+[![VideoTo360Panorama][product-screenshot]](https://github.com/AmolDerickSoans/VideoTo360VR/blob/main/resources/startpage.PNG)
+[![Page1][product-screenshot1]](https://github.com/AmolDerickSoans/VideoTo360VR/blob/main/resources/page1.PNG)
 
 
 
@@ -136,7 +136,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 
 <!--OUTPUT-->
-[![Output][output]](https://github.com/AmolDerickSoans/VideoTo360VR/blob/main/resources/mainWindowV1.PNG)
+[![Output][output]](https://github.com/AmolDerickSoans/VideoTo360VR/blob/main/resources/output.jpg)
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -171,7 +171,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/AmolDerickSoans/VideoTo360VR/issues)
+Project Link: [https://github.com/github_username/repo_name](https://github.com/AmolDerickSoans/VideoTo360Panorama/issues)
 
 
 
