@@ -136,7 +136,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 
 <!--OUTPUT-->
-[![Output][output]](https://github.com/AmolDerickSoans/VideoTo360VR/blob/main/resources/output.jpg)
+[![Output][output]](https://github.com/AmolDerickSoans/VideoTo360VR/blob/main/resources/result.JPG)
 
 <!-- ROADMAP -->
 ## Roadmap
