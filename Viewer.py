@@ -201,12 +201,12 @@ class StartPage(tk.Frame):
             process.delete_blurred("output/vid1")
             process.delete_blurred("output/vid2")
             process.delete_blurred("output/vid3")
-            makeCollageAble.collageAble("output/vid1", "output/collage1/")
+            """  makeCollageAble.collageAble("output/vid1", "output/collage1/")
             makeCollageAble.collageAble("output/vid2", "output/collage2/")
             makeCollageAble.collageAble("output/vid3", "output/collage3/")
-            #collage.collageMaker("output/collage1",1)
-            #collage.collageMaker("output/collage2",2)
-            #collage.collageMaker("output/collage3",3)
+            collage.collageMaker("output/collage1",1)
+            collage.collageMaker("output/collage2",2)
+            collage.collageMaker("output/collage3",3) """
             print("completed")
             button_next['state'] = NORMAL
 
@@ -291,9 +291,9 @@ class Page1(tk.Frame):
                                     pady = 3)  
         
         canvas1 = Canvas(tab1 , width =360,height=120)
-        #img1 = PIL.ImageTk.PhotoImage(PIL.Image.open("output\collage1\FinalCollage.jpg"))
+        """ img1 = PIL.ImageTk.PhotoImage(PIL.Image.open("output\collage1\FinalCollage.jpg"))
         canvas1.grid(column= 0,row=1 ,padx=5,pady=5)
-        #canvas1.create_image(0,0,anchor=NW , image = img1) 
+        canvas1.create_image(0,0,anchor=NW , image = img1)  """
         
        
         
@@ -410,7 +410,7 @@ menubar.add_cascade(label="File", menu=filemenu)
 helpmenu = Menu(menubar, tearoff=0)
 
 new = 1
-url ="https://github.com/AmolDerickSoans/VideoTo360VR"
+url ="https://github.com/AmolDerickSoans/VideoTo360Panorama"
 def openweb():
     webbrowser.open(url,new = new)
 

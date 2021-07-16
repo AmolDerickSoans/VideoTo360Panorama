@@ -11,7 +11,7 @@ R_WIDTH = 8400
 WIDTH = 8002
 HEIGHT = 4001
 BLACK_COLOR = 25
-RESULT = '../output/result.jpg'
+RESULT = './output/result.jpg'
 files = os.listdir(DIR)
 
 def stitch(files):
