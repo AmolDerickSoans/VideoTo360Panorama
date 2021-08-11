@@ -165,4 +165,10 @@ def PanoramaSIFT():
     else:
         print('error')
     end = time.time()
+    
     print('cost ' + str(end-start))
+    timecost()
+    
+def timecost(start , end):
+    cost = end-start
+    return cost

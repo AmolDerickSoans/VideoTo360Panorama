@@ -10,7 +10,6 @@ from tkinter import *
 from tkinter import filedialog
 from opencv360 import FrameBreaker,makeCollageAble,collage,process,panorama
 
-
 LARGEFONT =("Verdana", 35)
 
 class app(tk.Tk):
@@ -189,7 +188,7 @@ class StartPage(tk.Frame):
             th1.join()
             th2.join()
             th3.join()
-            """ th4 = threading.Thread(target= process.delete_blurred, args=( "output/vid1",))
+            th4 = threading.Thread(target= process.delete_blurred, args=( "output/vid1",))
             th4.start()
             th5 = threading.Thread(target= process.delete_blurred, args=( "output/vid2",))
             th5.start()
@@ -197,7 +196,7 @@ class StartPage(tk.Frame):
             th6.start()
             th4.join()
             th5.join()
-            th6.join()  """
+            th6.join() 
             process.delete_blurred("output/vid1")
             process.delete_blurred("output/vid2")
             process.delete_blurred("output/vid3")
@@ -278,6 +277,9 @@ class Page1(tk.Frame):
             createFinalDir()
             print("stitching")
             panorama.PanoramaSIFT()
+            
+            timecost = panorama.timecost()
+
            
        
         
@@ -357,7 +359,7 @@ class Page1(tk.Frame):
                             command = lambda : stitchSIFT()).pack()#grid(column = 5,row = 1,padx=20,pady=5)
 
         button_nextp1= ttk.Button(self, text ="Next >>",
-                            command = lambda : controller.show_frame(Page2) ,state = DISABLED).pack()#grid(column = 6,row = 1,padx=20,pady=5)
+                            command = lambda : controller.show_frame(Page2) ,state = NORMAL).pack()#grid(column = 6,row = 1,padx=20,pady=5)
 
 
    
@@ -365,28 +367,48 @@ class Page1(tk.Frame):
   
 # third window frame page2
 class Page2(tk.Frame):
+    
+    
+
     def __init__(self, parent, controller):
+
+        def openPano():
+            new = 1
+            url1 ="https://panoraven.com/en/share-360-photo"
+            webbrowser.open(url1,new = new)
+
+        
+
         tk.Frame.__init__(self, parent)
-        label = ttk.Label(self, text ="Page 2", font = LARGEFONT)
+        label = ttk.Label(self, text ="Result", font = LARGEFONT)
         label.grid(row = 0, column = 4, padx = 10, pady = 10)
   
         # button to show frame 2 with text
         # layout2
-        button1 = ttk.Button(self, text ="Page 1",
+        button1 = ttk.Button(self, text =" << Go Back",
                             command = lambda : controller.show_frame(Page1))
      
         # putting the button in its place by
         # using grid
-        button1.grid(row = 1, column = 1, padx = 10, pady = 10)
+        button1.grid(row = 1, column = 2, padx = 10, pady = 10)
   
         # button to show frame 3 with text
         # layout3
-        button2 = ttk.Button(self, text ="Startpage",
+        button2 = ttk.Button(self, text ="Return to MainPage",
                             command = lambda : controller.show_frame(StartPage))
      
         # putting the button in its place by
         # using grid
-        button2.grid(row = 2, column = 1, padx = 10, pady = 10)
+        button2.grid(row = 2, column = 2, padx = 10, pady = 10)
+
+        button3 = ttk.Button(self, text ="View panorama",
+                            command = lambda : openPano())
+     
+        # putting the button in its place by
+        # using grid
+        button3.grid(row = 3, column = 2, padx = 10, pady = 10)
+        
+
   
   
 # Driver Code
